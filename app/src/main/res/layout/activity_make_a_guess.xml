@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MakeAGuessActivity"
+    android:layout_margin="10dp">
+
+
+    <LinearLayout
+        android:id="@+id/gameLayout"
+        android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/nameEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="Name" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/scoreLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginVertical="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SCORE : "
+                android:textSize="24dp"/>
+
+            <TextView
+                android:id="@+id/scoreTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="24dp"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/interactionLayout"
+            android:layout_below="@id/scoreLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginVertical="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Guess the number : "
+                android:layout_gravity="center"
+                android:textSize="24dp"/>
+
+            <EditText
+                android:id="@+id/guessET"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:ems="10"
+                android:hint="Make A Guess"
+                android:textAlignment="center"
+                android:inputType="number"
+                android:text=""
+                android:textSize="24dp" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/validationLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/interactionLayout"
+            android:layout_marginVertical="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/validateButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
+                android:text="Validate" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/progressLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/validationLayout"
+            android:layout_marginVertical="10dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:max="10"
+                android:layout_weight="9" />
+
+            <TextView
+                android:id="@+id/triesLeftTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:text="10"
+                android:textAlignment="center"
+                android:textSize="24dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/hintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/progressLayout"
+            android:layout_marginVertical="10dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your number is : "
+                android:textSize="24dp" />
+
+            <TextView
+                android:id="@+id/hintTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TOO SMALL"
+                android:textSize="24dp" />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/hintLV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/hintLayout" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/difficultyLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <RadioGroup
+            android:id="@+id/difficultyRG"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="25dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/easyRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:checked="true"
+                android:gravity="center"
+                android:text="Easy" />
+
+            <RadioButton
+                android:id="@+id/mediumRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="medium" />
+
+            <RadioButton
+                android:id="@+id/hardRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="hard" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:onClick="selectDifficulty"
+            android:text="Select" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>
