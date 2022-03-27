@@ -1,10 +1,14 @@
 package com.arcreane.makeaguess;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,11 +17,14 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 enum Difficulty {
@@ -53,10 +60,24 @@ public class MakeAGuessActivity extends AppCompatActivity {
     private TextView hintTV;
     boolean m_bGameOver;
 
-    //    List<Pair<String, String>> userPreviousTries;
-    List<String> userPreviousTries;
-    // ArrayAdapter<Pair<String, String>> triesAdapter;
-    ArrayAdapter<String> triesAdapter;
+    /****
+     * Solution for simple_list_item1
+     */
+    //    List<String> userPreviousTries;
+    //    ArrayAdapter<String> triesAdapter;
+
+    /****
+     * Solution for simple_list_item2
+     */
+    ArrayList<Pair<String, String>> userPreviousTries;
+    ArrayAdapter<Pair<String, String>> triesAdapter;
+
+    /****
+     * Solution for simple_list_item2 using a SimpleAdapter
+     */
+    ArrayList<Map<String, Object>> listForSimpleAdapter;
+    SimpleAdapter simpleAdapter;
+
     private ListView hintLV;
 
 
@@ -68,7 +89,10 @@ public class MakeAGuessActivity extends AppCompatActivity {
         setContentView(R.layout.activity_make_a_guess);
 
         userPreviousTries = new ArrayList<>();
-        triesAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, userPreviousTries);
+        //When using simple_list_item_1
+        //triesAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, userPreviousTries);
+
+        listForSimpleAdapter = new ArrayList<>();
         nameET = findViewById(R.id.nameEdit);
     }
 
@@ -88,20 +112,30 @@ public class MakeAGuessActivity extends AppCompatActivity {
         hintLV = findViewById(R.id.hintLV);
         m_bGameOver = false;
 
+        //When using simple_list_item_2
+        triesAdapter = new ArrayAdapter<Pair<String, String>>(this, android.R.layout.simple_list_item_2, android.R.id.text1, userPreviousTries) {
+            @NonNull
+            @Override
+            public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                View adaptedView = super.getView(position, convertView, parent);
+                TextView tv1 = adaptedView.findViewById(android.R.id.text1);
+                TextView tv2 = adaptedView.findViewById(android.R.id.text2);
+                Pair<String, String> infos = userPreviousTries.get(position);
+                tv1.setText(infos.first);
+                tv2.setText(infos.second);
+                tv2.setTextSize(8);
+                return adaptedView;
+            }
+        };
 
-//        triesAdapter = new ArrayAdapter<Pair<String, String>>(this, android.R.layout.simple_list_item_2, userPreviousTries){
-//            @NonNull
-//            @Override
-//            public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-//                View adaptedView = super.getView(position, convertView, parent);
-//                TextView tv1 = adaptedView.findViewById(android.R.id.text1);
-//                TextView tv2 = adaptedView.findViewById(android.R.id.text2);
-//                Pair<String, String> infos = userPreviousTries.get(position);
-//                tv1.setText(infos.first);
-//                tv2.setText(infos.second);
-//                return adaptedView;
-//            }
-//        };
+
+        simpleAdapter = new SimpleAdapter(this, listForSimpleAdapter, android.R.layout.simple_list_item_2,
+                new String[]{"Value", "hint"}, new int[]{android.R.id.text1, android.R.id.text2});
+
+        //When using a SimpleAdapter
+        //hintLV.setAdapter(simpleAdapter);
+
+        //When using an Adapter
         hintLV.setAdapter(triesAdapter);
 
         validateButton.setOnClickListener(new View.OnClickListener() {
@@ -127,10 +161,17 @@ public class MakeAGuessActivity extends AppCompatActivity {
         else
             endGame();
 
-//        userPreviousTries.add(0,Pair.create(tmp, hintTV.getText().toString()));
         if (!m_bGameOver) {
-            userPreviousTries.add(0, tmp + " is " + hintTV.getText().toString());
+            //When using an Adapter
+            userPreviousTries.add(0, Pair.create(tmp, hintTV.getText().toString()));
             triesAdapter.notifyDataSetChanged();
+
+            //When using a SimpleAdapter
+            Map<String, Object> listItemMap = new HashMap<String, Object>();
+            listItemMap.put("Value", tmp);
+            listItemMap.put("hint", hintTV.getText().toString());
+            listForSimpleAdapter.add(0, listItemMap);
+            //simpleAdapter.notifyDataSetChanged();
         }
     }
 
