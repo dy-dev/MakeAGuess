@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MakeAGuessActivity"
-    android:layout_margin="10dp">
+    android:layout_margin="10dp"
+    tools:context=".MakeAGuessActivity">
 
 
     <LinearLayout
         android:id="@+id/gameLayout"
-        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="invisible">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -26,56 +26,58 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:hint="Name" />
+                android:hint="Name"
+                android:inputType="textPersonName" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/scoreLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginVertical="10dp">
+            android:layout_marginVertical="10dp"
+            android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="SCORE : "
-                android:textSize="24dp"/>
+                android:textSize="24dp" />
 
             <TextView
                 android:id="@+id/scoreTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:textSize="24dp"/>
+                android:textSize="24dp" />
         </LinearLayout>
 
 
         <LinearLayout
             android:id="@+id/interactionLayout"
-            android:layout_below="@id/scoreLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginVertical="10dp">
+            android:layout_below="@id/scoreLayout"
+            android:layout_marginVertical="10dp"
+            android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Guess the number : "
                 android:layout_gravity="center"
-                android:textSize="24dp"/>
+                android:text="Guess the number : "
+                android:textSize="24dp" />
 
             <EditText
                 android:id="@+id/guessET"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_gravity="center"
+                android:layout_weight="1"
                 android:ems="10"
                 android:hint="Make A Guess"
-                android:textAlignment="center"
                 android:inputType="number"
                 android:text=""
+                android:textAlignment="center"
                 android:textSize="24dp" />
 
 
@@ -116,8 +118,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:max="10"
-                android:layout_weight="9" />
+                android:layout_weight="9"
+                android:max="10" />
 
             <TextView
                 android:id="@+id/triesLeftTV"
@@ -138,8 +140,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/progressLayout"
             android:layout_marginVertical="10dp"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -165,7 +167,7 @@
     <LinearLayout
         android:id="@+id/difficultyLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:visibility="visible">
 
@@ -173,39 +175,55 @@
             android:id="@+id/difficultyRG"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:layout_marginHorizontal="10dp"
             android:layout_marginVertical="25dp"
-            android:gravity="center_horizontal"
             android:orientation="horizontal">
+
+            <View
+                android:layout_width="0dip"
+                android:layout_height="0dip"
+                android:layout_weight="1" />
 
             <RadioButton
                 android:id="@+id/easyRB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
-                android:checked="true"
+                android:layout_gravity="center"
                 android:gravity="center"
                 android:text="Easy" />
+
+            <View
+                android:layout_width="0dip"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
 
             <RadioButton
                 android:id="@+id/mediumRB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:checked="true"
                 android:gravity="center"
-                android:text="medium" />
+                android:text="Medium" />
+
+            <View
+                android:layout_width="0dip"
+                android:layout_height="0dip"
+                android:layout_weight="1" />
 
             <RadioButton
                 android:id="@+id/hardRB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
+                android:layout_gravity="center"
                 android:gravity="center"
-                android:text="hard" />
+                android:text="Hard" />
+
+            <View
+                android:layout_width="0dip"
+                android:layout_height="0dip"
+                android:layout_weight="1" />
+
         </RadioGroup>
 
         <Button
