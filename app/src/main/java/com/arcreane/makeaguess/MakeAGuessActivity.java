@@ -2,11 +2,15 @@ package com.arcreane.makeaguess;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Pair;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -23,7 +27,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -80,6 +83,27 @@ public class MakeAGuessActivity extends AppCompatActivity {
 
     private ListView hintLV;
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.game, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.guessMI:
+                Toast.makeText(this,"Let reset the game", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.wordScrambleMI:
+                Intent wordIntent = new Intent(this, WordScrambleActivity.class);
+                startActivity(wordIntent);
+                break;
+        }
+
+
+        return true;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +118,10 @@ public class MakeAGuessActivity extends AppCompatActivity {
 
         listForSimpleAdapter = new ArrayList<>();
         nameET = findViewById(R.id.nameEdit);
+
+
+        ActionBar applicationActionBar = getSupportActionBar();
+        applicationActionBar.setTitle("Make A Guess");
     }
 
     private void Initialisation() {

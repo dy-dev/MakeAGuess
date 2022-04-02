@@ -8,8 +8,9 @@
         <entry key="..\:/Work/Android/Ecoles/EpitaSchool/MakeAGuess/app/src/main/res/layout-land/activity_main.xml" value="0.1" />
         <entry key="..\:/Work/Android/Ecoles/EpitaSchool/MakeAGuess/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Work/Android/Ecoles/EpitaSchool/MakeAGuess/app/src/main/res/layout/activity_make_a_guess.xml" value="0.33" />
-        <entry key="..\:/Work/Android/Ecoles/EpitaSchool/MakeAGuess/app/src/main/res/layout/activity_select_game.xml" value="0.1" />
-        <entry key="..\:/Work/Android/Ecoles/EpitaSchool/MakeAGuess/app/src/main/res/layout/activity_word_scramble.xml" value="0.334375" />
+        <entry key="..\:/Work/Android/Ecoles/EpitaSchool/MakeAGuess/app/src/main/res/layout/activity_select_game.xml" value="0.33" />
+        <entry key="..\:/Work/Android/Ecoles/EpitaSchool/MakeAGuess/app/src/main/res/layout/activity_word_scramble.xml" value="0.1" />
+        <entry key="..\:/Work/Android/Ecoles/EpitaSchool/MakeAGuess/app/src/main/res/menu/game.xml" value="0.33" />
       </map>
     </option>
   </component>

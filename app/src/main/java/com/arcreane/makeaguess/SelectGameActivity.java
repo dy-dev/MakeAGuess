@@ -1,5 +1,6 @@
 package com.arcreane.makeaguess;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -18,6 +19,10 @@ public class SelectGameActivity extends AppCompatActivity implements View.OnClic
         makeAGuessButton.setOnClickListener(this);
         Button wordScrambleButton = findViewById(R.id.wordScrambleButton);
         wordScrambleButton.setOnClickListener(this);
+
+
+        ActionBar applicationActionBar = getSupportActionBar();
+        applicationActionBar.setTitle("Game Selection");
     }
 
     @Override

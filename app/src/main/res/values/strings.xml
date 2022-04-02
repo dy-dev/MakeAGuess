@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MakeAGuess</string>
+    <string name="anotherName">The name of the application</string>
 </resources>
